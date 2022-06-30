@@ -1,3 +1,4 @@
+  GNU nano 4.8                                                                                              availabilityAgent.sh
 #!/bin/bash
 TEST_PERIDOCITY=5
 
@@ -13,3 +14,7 @@ while read line; do
                 fi
 done < hosts
 echo
+sleep $TEST_PERIODICITY
+done
+
+e
