@@ -1,20 +1,21 @@
-  GNU nano 4.8                                                                                              availabilityAgent.sh
 #!/bin/bash
-TEST_PERIDOCITY=5
+TEST_PERIODICITY=5
 
 while true
 do
 while read line; do
         ping -D $line -c  1 1>/dev/null
         EC=$?
+        TEST_TIMESTAMP=$(date +%s%N)
                 if [  "$EC" -eq "0" ]; then
-                echo Test result for ${line} is 1 at $(date +%s%N)
+                RESULT=1
                 else
-                echo Test result for ${line} is 0 at $(date +%s%N)
+                RESULT=0
                 fi
+                echo Test result for ${line} is $RESULT at $TEST_TIMESTAMP
+                curl -X POST 'http://localhost:8086/write?db=hosts_metrics' --data-binary "availability_test,host=$line value=$RESULT $TEST_TIMESTAMP"
+
 done < hosts
 echo
 sleep $TEST_PERIODICITY
 done
-
-e
