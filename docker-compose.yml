@@ -15,4 +15,3 @@ services:
       - GF_DATABASE_HOST=influxdb:8086
       - GF_DATABASE_NAME=hosts_metrics
       pid: "host"
-
