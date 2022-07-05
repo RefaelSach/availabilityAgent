@@ -24,3 +24,5 @@ OR
 
 Run the script
 ./build.sh
+
+and DONE :)
