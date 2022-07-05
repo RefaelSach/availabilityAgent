@@ -1,6 +1,8 @@
 #!/bin/bash
 TEST_PERIODICITY=5
 
+#In this code we send a communication check for multiple computers on the Internet
+
 while true
 do
   while read line; do
