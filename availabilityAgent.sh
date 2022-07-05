@@ -4,7 +4,7 @@ TEST_PERIODICITY=5
 while true
 do
   while read line; do
-          ping -D $line -c  1 1>/dev/null
+          ping -D $line -c 1 -W 1 &> /dev/null 2>&1
           EC=$?
           TEST_TIMESTAMP=$(date +%s%N)
                   if [  "$EC" -eq "0" ]; then
